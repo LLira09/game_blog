@@ -24,3 +24,5 @@ Article.create(title: "Article 3", content: "ucas ipsum dolor sit amet darth sky
 ArticleCategory.create(article_id: 1, category_id: 1)
 ArticleCategory.create(article_id: 2, category_id: 3)
 ArticleCategory.create(article_id: 3, category_id: 2)
+
+puts "DONE"

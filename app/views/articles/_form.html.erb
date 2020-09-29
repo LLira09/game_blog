@@ -1,0 +1,15 @@
+<%= form_with model: @article do |f| %>
+    <hr>
+    
+    <br>
+    <%= f.label :title %>
+    <%= f.text_field :title , placeholder: "Title" %>
+    <br>
+    <%= f.label :content %>
+    <%= f.text_area :content, placeholder: "Type Article" %>
+    <br>
+    <%=f.label :category_ids %>
+    <%=f.collection_select :category_ids, @categories, :id, :name, prompt:  true %>
+    <br>
+    <%= f.submit %>
+<% end %>
