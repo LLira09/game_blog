@@ -1,15 +1,16 @@
 <%= form_with model: @article do |f| %>
-    <hr>
-    
     <br>
     <%= f.label :title %>
     <%= f.text_field :title , placeholder: "Title" %>
     <br>
     <%= f.label :content %>
     <%= f.text_area :content, placeholder: "Type Article" %>
+    <%= f.label "Author" %>
+    <%= f.collection_select :user_id, @user, :id, :username %>
     <br>
-    <%=f.label :category_ids %>
-    <%=f.collection_select :category_ids, @categories, :id, :name, prompt:  true %>
+    <%=f.label :category %>
+    <%=f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+    
     <br>
     <%= f.submit %>
 <% end %>

@@ -12,18 +12,18 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @user = User.all
     @categories = Category.all
   end
 
   def create
-    byebug
-    @new_article = Article.create(article_params)
+    @new_article = Article.new(article_params)
     @new_article.save
     redirect_to articles_path(@new_article)
   end 
 
   def article_params
-    params.require(:article).permit(:title,:content, category_ids:[])
+    params.require(:article).permit(:title, :content, :user_id, category_ids:[])
 
   end
 
