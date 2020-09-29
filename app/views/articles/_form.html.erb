@@ -10,7 +10,6 @@
     <br>
     <%=f.label :category %>
     <%=f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-    
     <br>
     <%= f.submit %>
 <% end %>

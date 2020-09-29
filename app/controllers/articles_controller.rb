@@ -22,6 +22,23 @@ class ArticlesController < ApplicationController
     redirect_to articles_path(@new_article)
   end 
 
+
+  def edit
+    @article = Article.find(params[:id])
+    @user = User.all
+    @categories = Category.all
+  end
+
+  def update
+    article = Article.find(params[:id])
+    article.update(article_params)
+    article.save
+    redirect_to article_path(article)
+  end 
+
+
+private 
+
   def article_params
     params.require(:article).permit(:title, :content, :user_id, category_ids:[])
 

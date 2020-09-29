@@ -1,0 +1,10 @@
+<h1><%=@category.name%></h1>
+<hr>
+
+<%@category.articles.each do |article| %>
+    <%= article.title %>
+    <br>
+    <%= article.content %>
+    <hr>
+    <%end%>
+
