@@ -1,3 +1,22 @@
 <h1><%=@article.title%></h1>
 <hr>
 <%=@article.content%>
+
+<hr>
+<%=@article.user.username%>
+<%@article.comments.each do |reply|%>
+            <%=reply.comment%>
+          <%end%>
+<hr>
+
+
+<section class="section comments">
+    <div class="container">
+        <h6 class="subtitle is-5"><strong><%= @article.comments.count %></strong> Comments</h6>
+        <div class="comment-form">
+            <hr />
+            <h5>Leave a comment</h5>
+             <%= render 'comments/form' %>
+        </div>
+    </div>
+</section>

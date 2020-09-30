@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_09_28_214522) do
     t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end 
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_09_28_214522) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "content"
+    t.text "comment"
     t.integer "user_id"
     t.integer "article_id"
     t.datetime "created_at", precision: 6, null: false

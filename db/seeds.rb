@@ -25,4 +25,6 @@ ArticleCategory.create(article_id: 1, category_id: 1)
 ArticleCategory.create(article_id: 2, category_id: 3)
 ArticleCategory.create(article_id: 3, category_id: 2)
 
+Comment.create(comment: "this is a Test",user_id: 1, article_id: 1 )
+
 puts "DONE"
