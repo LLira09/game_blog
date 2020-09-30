@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :users
   resources :categories
-  resources :articles do 
+  resources :articles  do 
     resources :comments
-  end 
+  end
+
 
 
   get 'signup', to: 'users#new'
