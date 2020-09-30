@@ -1,4 +1,23 @@
 <h1><%=@article.title%></h1>
+
+
+
+
+
+
+<h6><strong><%= @article.comments.count %></strong> Comments</h6>
+        <%@article.comments.each do |reply|%>
+            <li> <%=reply.comment%> </li>
+        <%end%>
+    <%= render 'comments/form' %>
+
+
+
+
+
+
+
+
 <h3>Author: <%= @article.user.username%></h3>
 
 <p><%=@article.content%></p>
@@ -6,3 +25,4 @@
     <%= link_to 'Edit', edit_article_path(@article) %>
     <%= link_to 'Delete', article_path(@article), method: :delete %>
 <% end %>
+
