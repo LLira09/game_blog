@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :require_user, except: [:show, :index]
+  
 
 
 
@@ -18,8 +20,13 @@ class ArticlesController < ApplicationController
 
   def create
     @new_article = Article.new(article_params)
-    @new_article.save
-    redirect_to articles_path(@new_article)
+    @new_article.user = current_user
+    if @new_article.save
+      flash[:notice] = "Article was created successfully"
+      redirect_to articles_path(@new_article)
+    else
+      render 'new'
+    end
   end 
 
 
@@ -46,9 +53,12 @@ class ArticlesController < ApplicationController
 private 
 
   def article_params
-    params.require(:article).permit(:title, :content, :user_id, category_ids:[])
+    params.require(:article).permit(:title, :content, category_ids:[])
 
   end
+
+ 
+
 
 
 end

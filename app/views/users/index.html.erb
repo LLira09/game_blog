@@ -2,4 +2,9 @@
 
 <% @users.each do |user| %>
     <p><%= user.username %></p>
+    <p><%= link_to 'Show Profile', user_path(user) %></p>
+    <% if logged_in? and user == current_user %>
+        <p><%= link_to 'Edit Profile', edit_user_path(user) %></p>
     <% end %>
+<% end %>
+
