@@ -8,6 +8,7 @@
 
 User.create(username: "Walid", email: "walid@walid.com", password: "12345678")
 User.create(username: "jake1", email: "jake1@jake1.com", password: "12345678")
+User.create(username: "jake", email: "jake@jake.com", password: "12345678")
 
 Category.create(name: "FPS")
 Category.create(name: "MMO")

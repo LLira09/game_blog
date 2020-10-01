@@ -13,12 +13,21 @@
         <%= @article.created_at.strftime("Posted on %m/%d/%Y") %>
     </div>
     </div>
-
-    <h6><strong><%= @article.comments.count %></strong> Comments</h6>
-        <%@article.comments.each do |reply|%>
-            <li> <%=reply.comment%> </li>
-        <%end%>
-    <%= render 'comments/form' %>
+   <div class="container mt-4">
+   <%= render 'comments/form' %>
+   <% @comments.each do |c| %>
+    <div class="card border-primary mb-3 mt-4">
+    <div class="card-header"><%= c.user.username %></div>
+    <div class="card-body">
+        <p class="card-text"><%= c.comment %></p>
+    </div>
+    <div class="card-footer text-muted">
+        <%= c.created_at.strftime("Posted on %m/%d/%Y @ %l:%M %P") %>
+    </div>
+    </div>
+    <% end %>
+   </div>
+    
 </div>
 
 
