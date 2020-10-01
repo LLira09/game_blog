@@ -1,21 +1,26 @@
-<h1><%=@article.title%></h1>
 
+<div class="container" id="page-content">
+    <div class="card mt-4">
+    <h5 class="card-header"><%=@article.title%></h5>
+    <div class="card-body">
+        <h5 class="card-title">Author: <%= @article.user.username%></h5>
+        <p class="card-text"><%=@article.content%></p>
+        <% if logged_in? && @article.user == current_user %>
+            <a class="btn btn-primary"<%= link_to 'Edit', edit_article_path(@article) %></a>
+            <a class="btn btn-danger" <%= link_to 'Delete', article_path(@article), method: :delete %></a>
+        <% end %>
+    </div>
+    <div class="card-footer text-muted">
+        <%= @article.created_at.strftime("Posted on %m/%d/%Y") %>
+    </div>
+    </div>
 
-
-
-<hr>
-<%=@article.user.username%>
-<%@article.comments.each do |reply|%>
-            <%=reply.comment%>
-          <%end%>
-<hr>
-
-
-<h6><strong><%= @article.comments.count %></strong> Comments</h6>
+    <h6><strong><%= @article.comments.count %></strong> Comments</h6>
         <%@article.comments.each do |reply|%>
             <li> <%=reply.comment%> </li>
         <%end%>
     <%= render 'comments/form' %>
+</div>
 
 
 
@@ -24,11 +29,5 @@
 
 
 
-<h3>Author: <%= @article.user.username%></h3>
 
-<p><%=@article.content%></p>
-<% if logged_in? && @article.user == current_user %>
-    <%= link_to 'Edit', edit_article_path(@article) %>
-    <%= link_to 'Delete', article_path(@article), method: :delete %>
-<% end %>
 
