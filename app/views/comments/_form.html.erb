@@ -1,3 +1,9 @@
+<% if flash[:errors] %>
+<% flash[:errors].each do | error | %>
+<li style="color: red"><%=error%> </li>
+<% end %>
+<% end %>
+
 <%= simple_form_for([@article, @article.comments.build]) do |f| %>
 <!--
 collection.build(attributes = {}, …) Returns one or more new objects of the collection type that have been instantiated with attributes and linked to this object through a foreign key, but have not yet been saved. Note: This only works if an associated object already exists, not if it‘s nil!
