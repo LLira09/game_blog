@@ -19,4 +19,4 @@ class SessionsController < ApplicationController
         flash[:notice] = "Logged out"
         redirect_to root_path
     end
-endgit 
+end
