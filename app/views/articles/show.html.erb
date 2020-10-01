@@ -3,6 +3,12 @@
 
 
 
+<hr>
+<%=@article.user.username%>
+<%@article.comments.each do |reply|%>
+            <%=reply.comment%>
+          <%end%>
+<hr>
 
 
 <h6><strong><%= @article.comments.count %></strong> Comments</h6>

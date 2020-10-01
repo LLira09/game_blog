@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
             flash[:notice] = "Logged in Sucessfully"
             redirect_to user 
         else
-            flash.now[:alert] = "There was something wrong with your email or password"
+            flash.now[:notice] = "There was something wrong with your email or password"
             render 'new'
         end
     end
@@ -19,4 +19,4 @@ class SessionsController < ApplicationController
         flash[:notice] = "Logged out"
         redirect_to root_path
     end
-end
+endgit 
