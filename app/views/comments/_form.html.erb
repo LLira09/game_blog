@@ -6,7 +6,10 @@
 
 <%= simple_form_for([@article, @article.comments.build]) do |f| %>
 
-    <% f.label :comment %>
-    <%= f.text_area :comment , placeholder: "type" %>
-    <%= f.button :submit , value =  'Leave a Comment' %>
+    <div class="form-group">
+        <% f.label :comment %>
+        <%= f.text_area :comment , placeholder: "Comment...", class: "form-control" %>
+    </div>
+    <%= f.submit 'Leave a Comment' %>
 <% end %>
+

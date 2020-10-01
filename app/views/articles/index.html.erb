@@ -1,18 +1,23 @@
 <div class="container">
     <h1 class="text-center">Articles</h1>
 
-    <%@articles.each do |article| %>
-    <div class="card" id="article-card">
-        <div class="card-header">
-            <%= article.title %>
-        </div>
-        <div class="card-body">
-            <p class="card-text"><%= article.content %></p>
-            <a class="btn btn-primary" <%=link_to 'Show' , article_path(article)%></a>
-        </div>
+    <% @articles.each do |article| %>
+    <div class="card mt-4">
+    <h5 class="card-header"><%=article.title%></h5>
+    <div class="card-body">
+        <h5 class="card-title">Author: <%= article.user.username%></h5>
+        <p class="card-text"><%=article.content%></p>
+        <a class="btn btn-primary"<%= link_to 'Show', article_path(article) %></a>
+        <% if logged_in? && (article.user == current_user || current_user.admin?) %>
+            <a class="btn btn-primary"<%= link_to 'Edit', edit_article_path(article) %></a>
+            <a class="btn btn-danger" <%= link_to 'Delete', article_path(article), method: :delete %></a>
+        <% end %>
     </div>
-        
-    <% end%> 
+    <div class="card-footer text-muted">
+        <%= article.created_at.strftime("Posted on %m/%d/%Y") %>
+    </div>
+    </div>
+    <% end %>
 </div>
   
   
