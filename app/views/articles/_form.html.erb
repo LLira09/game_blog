@@ -1,13 +1,16 @@
 <%= form_with model: @article do |f| %>
-    <br>
-    <%= f.label :title %>
-    <%= f.text_field :title , placeholder: "Title" %>
-    <br>
-    <%= f.label :content %>
-    <%= f.text_area :content, placeholder: "Type Article" %>
-    <br>
-    <%=f.label :category %>
-    <%=f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-    <br>
+    <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content, class: "form-control", placeholder: "Type Article" %>
+    </div>
+    <div class="custom-control custom-checkbox form-group">
+        <%=f.label :category %>
+        <br>
+        <%=f.collection_check_boxes :category_ids, Category.all, :id, :name, class:"custom-control-input custom-control-label form-control", id: "customCheck1" %>
+    </div>
     <%= f.submit %>
 <% end %>
