@@ -21,10 +21,11 @@
 
 .jumbotron {
     // background-color: #fff;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), asset-url('gamers.jpg');
+    // background-image: asset-url('gaming.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 html,
