@@ -1,7 +1,15 @@
+<% if flash[:errors] %>
+<% flash[:errors].each do | error | %>
+<li style="color: red"><%=error%> </li>
+<% end %>
+<% end %>
+
 <%= simple_form_for([@article, @article.comments.build]) do |f| %>
+
     <div class="form-group">
         <% f.label :comment %>
         <%= f.text_area :comment , placeholder: "Comment...", class: "form-control" %>
     </div>
     <%= f.submit 'Leave a Comment' %>
 <% end %>
+

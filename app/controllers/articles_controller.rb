@@ -1,6 +1,4 @@
 class ArticlesController < ApplicationController
-  before_action :require_user, except: [:show, :index]
-  
 
 
 
@@ -20,13 +18,16 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @new_article = Article.new(article_params)
-    @new_article.user = current_user
-    if @new_article.save
+   
+    new_article = Article.new(article_params)
+    new_article.user = current_user
+    if !new_article.valid?
+      flash[:errors] = new_article.errors.full_messages
+      redirect_to new_article_path
+    else 
+      new_article.save
       flash[:notice] = "Article was created successfully"
-      redirect_to articles_path(@new_article)
-    else
-      render 'new'
+      redirect_to articles_path(new_article)
     end
   end 
 
@@ -44,22 +45,18 @@ class ArticlesController < ApplicationController
     redirect_to article_path(article)
   end 
 
-  def destroy
-    @article = Article.find(params[:id])
-    @article.destroy 
-    redirect_to articles_path
-  end
-
 
 private 
 
   def article_params
-    params.require(:article).permit(:title, :content, category_ids:[])
+    params.require(:article).permit(:title, :content, :user_id, category_ids:[])
 
   end
 
- 
+  def comment_params
+    params.require(:comment).permit(:content)
 
+  end
 
 
 end
