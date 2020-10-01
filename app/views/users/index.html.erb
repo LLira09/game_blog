@@ -1,22 +1,5 @@
-
-<div class="container">
 <h1>All Users</h1>
-<div class="row">
+
 <% @users.each do |user| %>
-
-  <div class="col-sm-4">
-    <div class="card mt-4">
-      <div class="card-body">
-        <h5 class="card-title"><%= user.username%></h5>
-        <p class="card-text"><%= user.email %></p>
-        <a class="btn btn-primary"<%= link_to 'Show', user_path(user) %></a>
-        <% if logged_in? && user == current_user %>
-            <a class="btn btn-primary"<%= link_to 'Edit Profile', edit_user_path(user) %></a>
-        <% end %>
-        </div>
-    </div>
-  </div>
-<% end %>
-</div>
-
-
+    <p><%= user.username %></p>
+    <% end %>
